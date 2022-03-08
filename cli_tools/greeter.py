@@ -5,6 +5,9 @@ import click
 @click.command()
 @click.argument('first_name')
 @click.argument('last_name')
-def greet(first_name, last_name):
+@click.option('--lang', help = 'Specify English(EN) or Espanyol (ES)', default='EN'
+              ,type=click.Choice(['EN','ES']))
+def greet(first_name, last_name, lang):
     """Displays a greeting to the user"""
-    click.echo(f"Hello, {first_name} {last_name}!")
+    greeting = 'Hola' if lang=='ES' else 'Hello'
+    click.echo(f"{greeting}, {first_name} {last_name}!")
